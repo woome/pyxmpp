@@ -297,7 +297,7 @@ class StreamTLSMixIn:
         if not self.tls_settings.verify_callback:
             self.tls_settings.verify_callback = self.tls_is_certificate_valid
         
-        self.__logger.debug("tls_settings: {0!r}".format(self.tls_settings.__dict__))
+        self.__logger.debug("tls_settings: %r" % (self.tls_settings.__dict__, ))
         self.__logger.debug("Creating TLS connection")
 
         if self.tls_settings.verify_peer:
@@ -343,13 +343,13 @@ class StreamTLSMixIn:
                 for rdns in cert['subject']:
                     for key, value in rdns:
                         if key == 'commonName' and JID(value) == self.peer:
-                            self.__logger.debug(" good commonName: {0}".format(value))
+                            self.__logger.debug(" good commonName: %s " % (value, ))
                             valid_hostname_found = True
             if 'subjectAltName' in cert:
                 for key, value in cert['subjectAltName']:
                     if key == 'DNS' and JID(value) == self.peer:
-                        self.__logger.debug(" good subjectAltName({0}): {1}"
-                                                                    .format(key, value))
+                        self.__logger.debug(" good subjectAltName(%s): %s" %
+                                                                    (key, value))
                         valid_hostname_found = True
             return valid_hostname_found
         except:

@@ -116,7 +116,7 @@ class StreamHandler:
         # this is also bad...
         if desc.startswith('xmlns: http://www.xmpp.org/extensions/xep-0084.html#'):
             return
-        logger.warning("XML STREAM WARNING: {0}".format(desc))
+        logger.warning("XML STREAM WARNING: %s" % (desc, ))
 
 try:
 #########################################################################
