@@ -188,7 +188,7 @@ class StreamBase(StanzaProcessor,xmlextra.StreamHandler):
             to = from_utf8(addr)
         allow_cname = True
         if service is not None and (addr != 'chat.facebook.com'
-                or not pxmpp.BROKEN_FACEBOOK_SRV):
+                or not pyxmpp.BROKEN_FACEBOOK_SRV):
             self.state_change("resolving srv", (addr, service))
             addrs = resolver.resolve_srv(addr, service)
             if not addrs:
