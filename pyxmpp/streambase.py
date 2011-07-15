@@ -34,6 +34,7 @@ import errno
 import logging
 
 
+import pyxmpp
 from pyxmpp import xmlextra
 from pyxmpp.expdict import ExpiringDictionary
 from pyxmpp.utils import to_utf8, from_utf8
@@ -186,7 +187,8 @@ class StreamBase(StanzaProcessor,xmlextra.StreamHandler):
         if to is None:
             to = from_utf8(addr)
         allow_cname = True
-        if service is not None:
+        if service is not None and (addr != 'chat.facebook.com'
+                or not pxmpp.BROKEN_FACEBOOK_SRV):
             self.state_change("resolving srv", (addr, service))
             addrs = resolver.resolve_srv(addr, service)
             if not addrs:

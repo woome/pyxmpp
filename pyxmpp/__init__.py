@@ -68,4 +68,6 @@ method as_xml() providing their XML representations.
 
 __docformat__="restructuredtext en"
 
+BROKEN_FACEBOOK_SRV = False
+
 # vi: sts=4 et sw=4
